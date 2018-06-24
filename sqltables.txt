@@ -1,0 +1,18 @@
+create database orders;
+
+use orders;
+
+create table customer(id int primary key, name varchar(100), phone_number varchar(100),
+email varchar(100));
+
+create table address(id int primary key, line1 varchar(100), line2 varchar(100),
+city varchar(100), state varchar(100), zipcode varchar(20), custid int, foreign key(custid) references customer(id));
+
+create table item(id int primary key, name varchar(100), description varchar(100),
+amount double)
+
+create table ordersentry(orderid int primary key, custid int , totalamount double)
+
+create table order_items(id int primary key, orderid int , itemid int, qty int ,amount double,
+foreign key(orderid) references ordersentry(orderid), foreign key(itemid) references item(id))
+
